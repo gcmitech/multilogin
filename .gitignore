@@ -1,0 +1,5 @@
+venv/
+multilogin.code-workspace
+.env.dev
+.env.prod
+multilogin/fixtures

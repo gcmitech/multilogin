@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web:
+    image: multilogin-web:prod
+    env_file:
+      - ./.env.prod
+  nginx:
+    image: multilogin-nginx:prod
+    ports:
+      - 1400:80

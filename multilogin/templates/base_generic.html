@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html class="h-full bg-white" lang="en-US">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'content/tailwind.css' %}" />
+  <head>
+    {% block title %}
+    <script type="text/javascript">
+      function load() {
+        window.document.test.submit();
+        return;
+      }
+    </script>
+    {% endblock %}
+  </head>
+  <body class="h-full">
+    {% block sidebar %}<!-- insert default navigation text for every page -->{%endblock%}
+    {% block content %}<!-- default content text (typically empty) -->{%endblock%}
+  </body>
+</html>

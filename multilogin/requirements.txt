@@ -1,0 +1,6 @@
+Django==3.2.16
+django-mssql-backend==2.8.1
+djangorestframework==3.14.0
+mssql-django==1.1.3
+pyodbc==4.0.34
+gunicorn==20.1.0

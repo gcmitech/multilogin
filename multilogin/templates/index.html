@@ -1,0 +1,99 @@
+{% extends "base_generic.html" %} {% block content %}
+{% block title %}
+<title>Home - Mi Technologies, Inc.</title>
+{% endblock %}
+<body class="h-full">
+  <div
+    class="relative bg-gray-100 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28"
+  >
+    <div class="relative mx-auto max-w-7xl">
+      {% load static %}
+      <img class="h-12 w-auto" src="{% static 'img/logo.png' %}" alt="Mi Technologies, Inc.">
+      <p>Welcome, <b> {{ user.username }} </b>. Thanks for logging in.</p>
+      <div class="text-aligh-right">
+        {% if request.user.is_staff %}
+        <a href="{% url 'admin:index' %}"><b>Admin</b></a>
+        <b>/</b>
+        {% endif %}
+        <a href="{% url 'logout' %}"><b>Logout</b></a>
+        </div>
+      <div class="text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Mi Technologies, Inc.
+        </h2>
+      </div>
+      <div
+        class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3"
+      >
+        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+          <div class="flex-shrink-0">
+            <img
+              class="h-48 w-full object-cover"
+              src="{% static 'img/smartcontrol.png' %}"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-1 flex-col justify-between bg-white p-6">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-indigo-600">
+                <a
+                  href="{{ smartcontrol }}"
+                  class="hover:underline"
+                  >http://smartcontrol.mitechnologiesinc.com
+                >
+              </p>
+                <p class="text-xl font-semibold text-gray-900">Smart Control</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+          <div class="flex-shrink-0">
+            <img
+              class="h-48 w-full object-cover"
+              src="{% static 'img/partsdata.png' %}"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-1 flex-col justify-between bg-white p-6">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-indigo-600">
+                <a
+                  href="http://parts.mitechnologiesinc.com"
+                  class="hover:underline"
+                  >http://parts.mitechnologiesinc.com
+                >
+              </p>
+                <p class="text-xl font-semibold text-gray-900">Parts Data</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+          <div class="flex-shrink-0">
+            <img
+              class="h-48 w-full object-cover"
+              src="{% static 'img/apps3.png' %}"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-1 flex-col justify-between bg-white p-6">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-indigo-600">
+                <a
+                  href="http://apps3.mitechnologiesinc.com"
+                  class="hover:underline"
+                  >http://apps3.mitechnologiesinc.com
+                >
+              </p>
+                <p class="text-xl font-semibold text-gray-900">Apps3</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+</body>

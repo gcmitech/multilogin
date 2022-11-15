@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web:
+    image: multilogin-web:dev
+    env_file:
+      - ./.env.dev
+  nginx:
+    image: multilogin-nginx:dev
+    ports:
+      - 1337:80

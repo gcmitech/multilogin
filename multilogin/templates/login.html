@@ -1,0 +1,105 @@
+{% extends "base_generic.html" %} {% block content %} {% block title %}
+<title>Login - Mi Technologies, Inc.</title>
+{% endblock %}
+<div class="flex min-h-full">
+  {% load static %}
+  <div
+    class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
+  >
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div class="mt-8">
+        <div>
+          <div class="relative mt-6">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+          </div>
+        </div>
+        <img
+          class="h-12 w-auto"
+          src="{% static 'img/logo.png' %}"
+          alt="Mi Technologies, Inc."
+        />
+        <div class="mt-6">
+          <form action="{% url 'login' %}" method="POST" class="space-y-6">
+            {% csrf_token %}
+            <div>
+              <label
+                for="username"
+                class="block text-sm font-medium text-gray-700"
+                >Username</label
+              >
+              <div class="mt-1">
+                <input
+                  name="username"
+                  placeholder="Username"
+                  type="text"
+                  autocomplete="username"
+                  required
+                  class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label
+                for="password"
+                class="block text-sm font-medium text-gray-700"
+                >Password</label
+              >
+              <div class="mt-1">
+                <input
+                  name="pswd"
+                  placeholder="Password"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                  class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                />
+                <label
+                  for="remember-me"
+                  class="ml-2 block text-sm text-gray-900"
+                  >Remember me</label
+                >
+              </div>
+            </div>
+
+            <div>
+              <button
+                name="sign-in"
+                type="submit"
+                class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
+                Sign in
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="relative hidden w-0 flex-1 lg:block">
+    <img
+      class="absolute inset-0 h-full w-full object-cover"
+      src="{% static 'img/login.jpg' %}"
+      alt=""
+    />
+  </div>
+</div>
+{% endblock %}

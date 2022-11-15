@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./multilogin
+      dockerfile: Dockerfile
+    command: gunicorn multilogin.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/usr/src/multilogin/static
+    expose:
+      - 8000
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/usr/src/multilogin/static
+    depends_on:
+      - web
+volumes:
+  redisdata:
+  static_volume:
