@@ -13,6 +13,11 @@ class Employee(AbstractUser):
         max_length=100,
     )
 
+    token = models.CharField(
+        max_length=100,
+        default="NULL",
+    )
+
     def __str__(self):
         return self.username
 
@@ -78,6 +83,49 @@ class SmartControlUser(models.Model):
         on_delete=models.CASCADE,
         null=True,
 
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class BinManagerUser(models.Model):
+
+    name = models.CharField(
+        'Username',
+        max_length=50,
+    )
+
+    password = models.CharField(
+        max_length=50,
+    )
+
+    token = models.CharField(
+        max_length=32,
+        null=True,
+    )
+
+    surname = models.CharField(
+        max_length=50,
+    )
+
+    email = models.CharField(
+        max_length=50,
+    )
+
+    department_id = models.IntegerField(
+    )
+
+    position = models.IntegerField(
+    )
+
+    is_root = models.BooleanField(
+    )
+
+    is_firstuse = models.BooleanField(
+    )
+
+    is_active = models.BooleanField(
     )
 
     def __str__(self):

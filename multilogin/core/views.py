@@ -1,3 +1,6 @@
+import datetime
+import secrets
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -38,6 +41,16 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            u = Employee.objects.filter(username=username)
+            try:
+                if u.get(token="NULL") == True:
+                    token = secrets.token_urlsafe(32)
+                    u.update(token=token)
+            except ObjectDoesNotExist:
+                pass
+            if u.last_login + datetime.timedelta(hours=24) < datetime.now():
+                token = secrets.token_urlsafe(32)
+                u.update(token=token)
             return redirect('index')
         else:
             messages.info(request, 'Wrong username or password.')
