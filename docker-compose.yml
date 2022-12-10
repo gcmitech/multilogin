@@ -5,15 +5,21 @@ services:
     build:
       context: ./multilogin
       dockerfile: Dockerfile
-    command: gunicorn multilogin.wsgi:application --bind 0.0.0.0:8000
+    image: mitdeveloper/multilogin:dev
+    command: gunicorn multilogin.wsgi:application --bind 0.0.0.0:4000
     volumes:
       - static_volume:/usr/src/multilogin/static
     expose:
-      - 8000
+      - 4000
   nginx:
-    build: ./nginx
+    image: nginx:alpine
+    container_name: multilogin-nginx
+    restart: unless-stopped
+    ports:
+      - 4000:80
     volumes:
       - static_volume:/usr/src/multilogin/static
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
     depends_on:
       - web
 volumes:

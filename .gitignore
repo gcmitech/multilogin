@@ -3,3 +3,4 @@ multilogin.code-workspace
 .env.dev
 .env.prod
 multilogin/fixtures
+multilogin.code-workspace
